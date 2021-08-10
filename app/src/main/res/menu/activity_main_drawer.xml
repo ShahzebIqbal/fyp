@@ -6,19 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Edit Profile" />
+            android:icon="@drawable/ic_person"
+            android:title="Home" />
         <item
             android:id="@+id/nav_bluetooth"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_settings_bluetooth"
             android:title="Bluetooth" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="About" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Logout" />
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings" />
     </group>
 </menu>

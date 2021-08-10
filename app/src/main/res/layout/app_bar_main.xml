@@ -6,43 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_marginTop="55dp"
-        android:layout_height="match_parent">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            app:tabTextColor="@android:color/white"
-            android:background="@color/colorPrimary"
-            android:layout_height="wrap_content" >
-
-            <com.google.android.material.tabs.TabItem
-                android:text="Home"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <com.google.android.material.tabs.TabItem
-                android:text="Consumption"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <com.google.android.material.tabs.TabItem
-                android:text="Pump Controll"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <com.google.android.material.tabs.TabItem
-                android:text="Report"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-        </com.google.android.material.tabs.TabLayout>
-
-    </androidx.viewpager.widget.ViewPager>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -59,15 +26,29 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        app:tabTextColor="@android:color/white"
+        android:layout_height="wrap_content" />
 
-    <include layout="@layout/content_main" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+
+</LinearLayout>
+
+<!--    <include layout="@layout/content_main" />-->
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_margin="@dimen/fab_margin"-->
+<!--        app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

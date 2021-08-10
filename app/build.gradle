@@ -1,17 +1,24 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.fyp.swms"
+        applicationId "Com.fyp.swms"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -38,6 +45,9 @@ dependencies {
     //for animation of views
     implementation 'com.daimajia.easing:library:2.0@aar'
 
+    implementation 'com.karumi:dexter:5.0.0'
+    //for network Image
+    implementation 'com.squareup.picasso:picasso:2.3.2'
 
     //for animation of views
 //    implementation 'com.daimajia.easing:library:2.0@aar'
@@ -45,6 +55,13 @@ dependencies {
 
     //for animation of views
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //for google SignIn
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:28.3.1')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.2'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

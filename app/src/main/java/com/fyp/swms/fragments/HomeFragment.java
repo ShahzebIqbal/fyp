@@ -1,17 +1,15 @@
-package com.fyp.swms.ui.home;
+package com.fyp.swms.fragments;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.fyp.swms.R;
 import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders;
@@ -20,7 +18,6 @@ import java.util.Date;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
     int progress = 10;
     TextView tvFillProgress, tvPumpStatus, tvLastFill, tvTextMotor;
     CircularFillableLoaders circularFillableLoaders;
@@ -28,11 +25,19 @@ public class HomeFragment extends Fragment {
     boolean isMotorOn =false;
     boolean isNulOn=false;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+    public HomeFragment() { }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View root  = inflater.inflate(R.layout.fragment_home, container, false);
 
         tvFillProgress = root.findViewById(R.id.tvFillProgress);
         tvPumpStatus = root.findViewById(R.id.tvPumpStatus);
@@ -79,9 +84,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         return root;
     }
-
 
     void updateProgress() {
         progress++;
@@ -107,7 +112,6 @@ public class HomeFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.d("", "==============================>>>>> " + progress);
                 tvFillProgress.setText((progress + "%"));
                 circularFillableLoaders.setProgress(100 - progress);
                 if (progress > 0 && isNulOn) reduceProgress();
@@ -120,16 +124,5 @@ public class HomeFragment extends Fragment {
     }
 
 
-    static class MyThread extends AsyncTask<Void, Void, Void>{
-
-        MyThread(int progress){
-
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            return null;
-        }
-    }
 
 }
