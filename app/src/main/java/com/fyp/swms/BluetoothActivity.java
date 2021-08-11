@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -34,7 +36,7 @@ public class BluetoothActivity extends AppCompatActivity {
 
     BroadcastReceiver broadcastReceiver;
 
-
+    ArrayList<BluetoothDevice> devicesArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,28 @@ public class BluetoothActivity extends AppCompatActivity {
         ivBTIcon = findViewById(R.id.ivBTIcon);
         btnScanDevices = findViewById(R.id.btnScanDevices);
         devicesList = findViewById(R.id.devicesList);
+
+        devicesArrayList = new ArrayList<>();
+
+
+
+        devicesList.setOnItemClickListener((parent, view, position, id) -> {
+//            Toast.makeText(BluetoothActivity.this, devicesArrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
+            BluetoothDevice device = devicesArrayList.get(position);
+
+            if (device.getBondState()==BluetoothDevice.BOND_BONDED){
+                Toast.makeText(BluetoothActivity.this, "'" + device.getName() + "' is Connected", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(BluetoothActivity.this, "Connecting with '" + device.getName() + "'", Toast.LENGTH_SHORT).show();
+                try {
+                    createBond(device);
+                } catch (Exception e) {
+                    Toast.makeText(this, "Failed to connect", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
 
 
         btnScanDevices.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +88,7 @@ public class BluetoothActivity extends AppCompatActivity {
                     bluetoothAdapter.startDiscovery();
 
                     ArrayList<String> names = new ArrayList<>();
-                    ArrayList<BluetoothDevice> devicesArrayList = new ArrayList<>();
+                    devicesArrayList = new ArrayList<>();
 
                     broadcastReceiver = new BroadcastReceiver() {
                         @Override
@@ -74,11 +98,13 @@ public class BluetoothActivity extends AppCompatActivity {
                                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                                 Log.d("BLUETOOTH_DEVICES", device.getName());
                                 names.add(device.getName());
+                                devicesArrayList.add(device);
                             }
                             if (names.size()!=0) {
-                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, names);
+                                ArrayAdapter<BluetoothDevice> adapter = new ArrayAdapter<BluetoothDevice>(getApplicationContext(), android.R.layout.simple_list_item_1, devicesArrayList);
                                 devicesList.setAdapter(adapter);
                             }
+
 
                         }
                     };
@@ -114,9 +140,13 @@ public class BluetoothActivity extends AppCompatActivity {
             tvBTStatus.setText("Turned Off");
         }
 
+    }
 
-
-
+    public boolean createBond(BluetoothDevice btDevice) throws Exception {
+        Class class1 = Class.forName("android.bluetooth.BluetoothDevice");
+        Method createBondMethod = class1.getMethod("createBond");
+        Boolean returnValue = (Boolean) createBondMethod.invoke(btDevice);
+        return returnValue.booleanValue();
     }
 
     @Override
