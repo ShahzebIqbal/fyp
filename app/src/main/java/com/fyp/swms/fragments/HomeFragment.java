@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fyp.swms.R;
 import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders;
@@ -18,7 +19,7 @@ import java.util.Date;
 
 public class HomeFragment extends Fragment {
 
-    int progress = 10;
+    int progress = 30;
     TextView tvFillProgress, tvPumpStatus, tvLastFill, tvTextMotor;
     CircularFillableLoaders circularFillableLoaders;
 
@@ -32,10 +33,13 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        Toast.makeText(requireContext(), "onCreate", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        Toast.makeText(requireContext(), "onCreateView", Toast.LENGTH_SHORT).show();
 
         View root  = inflater.inflate(R.layout.fragment_home, container, false);
 

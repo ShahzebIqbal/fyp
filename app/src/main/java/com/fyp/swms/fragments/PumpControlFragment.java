@@ -11,8 +11,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fyp.swms.R;
+import com.fyp.swms.SettingsPreferences;
 
 public class PumpControlFragment extends Fragment {
+
+    SettingsPreferences sp;
 
     public PumpControlFragment() {
     }
@@ -21,6 +24,7 @@ public class PumpControlFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sp = new SettingsPreferences(requireContext());
     }
 
     @Override
@@ -34,6 +38,7 @@ public class PumpControlFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 switchBg.setBackgroundResource(R.drawable.switch_off1);
+
             }
         });
 
