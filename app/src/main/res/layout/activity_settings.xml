@@ -111,7 +111,7 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src ="@drawable/shahzaib"
+                        android:src ="@drawable/shah"
                         />
 
                 </androidx.cardview.widget.CardView>
@@ -120,13 +120,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:layout_gravity="center"
-                android:textColor="#000000"
                 android:layout_marginTop="8dp"
-                android:text="Shahzaib Iqbal"
-                />
+                android:text="Shahzaib Iqbal(40038)"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -153,7 +152,7 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src ="@drawable/shahzaib"
+                        android:src ="@drawable/inshaleditited"
                         />
 
                 </androidx.cardview.widget.CardView>
@@ -162,13 +161,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:layout_gravity="center"
-                android:textColor="#000000"
                 android:layout_marginTop="8dp"
-                android:text="Shahzaib Iqbal"
-                />
+                android:text="InshaL rajput(40677)"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -195,7 +193,7 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src ="@drawable/shahzaib"
+                        android:src ="@drawable/ali"
                         />
 
                 </androidx.cardview.widget.CardView>
@@ -204,13 +202,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:layout_gravity="center"
-                android:textColor="#000000"
                 android:layout_marginTop="8dp"
-                android:text="Shahzaib Iqbal"
-                />
+                android:text="Ali Naqi(39545)"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
